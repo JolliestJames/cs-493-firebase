@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import * as Routes from '../constant/routes';
+import * as ROUTES from '../../constants/routes';
 
 const Navigation = () => (
   <div>
     <ul>
       <li>
-        <Link to={Routes.LANDING}>Landing</Link>
+        <Link to={ROUTES.LANDING}>Landing</Link>
       </li>
       <li>
-        <Link to={Routes.HOME}>Home</Link>
+        <Link to={ROUTES.HOME}>Home</Link>
       </li>
     </ul>
   </div>
