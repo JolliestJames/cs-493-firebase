@@ -20,8 +20,13 @@ class Firebase {
   createUser = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  signIn = (email, password) =>
+  signInUser = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+
+  googleProvider = () => app.auth.GoogleAuthProvider();
+
+  googleSignInUser = (provider) =>
+    this.auth.signInWithPopup(provider);
 }
 
 export default Firebase;
