@@ -23,9 +23,9 @@ class Firebase {
   signInUser = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-  googleProvider = () => app.auth.GoogleAuthProvider();
+  googleProvider = new app.auth.GoogleAuthProvider();
 
-  googleSignInUser = (provider) =>
+  providerSignIn = (provider) =>
     this.auth.signInWithPopup(provider);
 }
 
