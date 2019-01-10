@@ -27,6 +27,9 @@ class Firebase {
 
   providerSignIn = (provider) =>
     this.auth.signInWithPopup(provider);
+
+  currentUser = () =>
+    this.auth.currentUser;
 }
 
 export default Firebase;
