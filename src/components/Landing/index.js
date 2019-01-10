@@ -69,11 +69,11 @@ class LandingBase extends Component {
 
   render() {
     const {email, password, error} = this.state;
-    const {container, googleButton} = styles;
+    const {content, googleButton} = styles;
 
     return (
       <div>
-        <div style={container}>
+        <div style={content}>
           <input
             name="email"
             value={email}
@@ -89,7 +89,7 @@ class LandingBase extends Component {
             placeholder="Password"
           />
         </div>
-        <div style={container}>
+        <div style={content}>
           <form onSubmit={this.signIn}>
             <button type="submit">Sign In</button>
           </form>
@@ -97,7 +97,7 @@ class LandingBase extends Component {
             <button type="submit">Sign Up</button>
           </form>
         </div>
-        <div style={container}>
+        <div style={content}>
           <form onSubmit={this.googleSignIn}>
             <button style={googleButton} type="submit">Sign In With Google</button>
           </form>
@@ -111,17 +111,24 @@ class LandingBase extends Component {
 const Landing = withRouter(withFirebase(LandingBase));
 
 const styles = {
-  container: {
-    borderRadius: 4,
+  content: {
     borderWidth: 0.5,
     borderColor: '#d6d7da',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    width: '30rem',
+    height: '60%',
+    padding: '1rem',
+    margin: '0 auto'
   },
   googleButton: {
     backgroundColor: '#55CCFF',
-    borderRadius: 4,  
+    border: 'none',
+    borderRadius: '0.2rem',
+    padding: '1rem',
+    margin: '0.5rem'
   }
 }
 
