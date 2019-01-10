@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
 
-class Home extends Component {
+class HomeBase extends Component {
   render() {
     const {container, content} = styles;
 
     return (
       <div style={container}>
         <div style={content}>
-          User Details
+          {this.props.firebase.currentUser() ? this.props.firebase.currentUser().email : 'No one is logged in.'}
         </div>
       </div>
     );
@@ -36,5 +37,7 @@ const styles = {
     margin: '0 auto'
   }
 }
+
+const Home = withFirebase(HomeBase);
 
 export default Home;
