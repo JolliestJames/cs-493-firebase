@@ -10,6 +10,8 @@ import CreateNote from '../CreateNote';
 
 import * as ROUTES from '../../constants/routes'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const App = () => (
   <Router>
     <div>
