@@ -25,8 +25,17 @@ class Firebase {
       body: body
     })
 
+  updateNote = (id, title, body) =>
+    this.database.ref('/notes/' +id).set({
+      title: title,
+      body: body
+    })
+
   getNotes = () =>
     this.database.ref('/notes');
+
+  getNote = (id) =>
+    this.database.ref('/notes/' +id)
 
   createUser = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
