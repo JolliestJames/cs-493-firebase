@@ -25,8 +25,6 @@ class Notes extends Component {
   };
 
   viewNote(note_id, event) {
-    console.log(note_id)
-
     this.props.history.push(
       {
         pathname: ROUTES.VIEW_NOTE,
@@ -58,21 +56,20 @@ class Notes extends Component {
     });
 
     return (
-      <div style={content}>
+      <div className="container">
         <h1 style={notes_div}>Notes</h1>
-        { 
+        {
           notes_data.map(note => 
-            <div key={note.id} style={notes_div}>
-              <label>Title: </label>
-              <span onClick={this.viewNote.bind(this, note.id)}>
+            <div key={note.id} style={notes_div} className="container">
+              <span className="btn btn-link" onClick={this.viewNote.bind(this, note.id)}>
                 {note.title}
               </span>
               <br/><br/>
             </div>
           )
         }
-        <form onSubmit={this.createNote}>
-          <button>Create Note</button>
+        <form onSubmit={this.createNote} className="">
+          <button className="btn btn-primary">Create Note</button>
         </form>
       </div>
     );
