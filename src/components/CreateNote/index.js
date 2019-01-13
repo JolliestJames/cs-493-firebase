@@ -34,7 +34,6 @@ class CreateNote extends Component {
 
   render() {
     const {title, body} = this.state;
-    const {content} = styles;
 
     return (
       <div className="container">
@@ -63,21 +62,6 @@ class CreateNote extends Component {
         </form>
       </div>
     );
-  }
-}
-
-const styles = {
-  content: {
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    width: '30rem',
-    height: '60%',
-    padding: '1rem',
-    margin: '0 auto'
   }
 }
 

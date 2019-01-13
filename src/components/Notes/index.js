@@ -37,7 +37,7 @@ class Notes extends Component {
 
   render() {
     const {notes} = this.state;
-    const {notes_div, content} = styles;
+    const {notes_div} = styles;
 
     this.props.firebase.getNotes().once('value').then(snapshot => {
       this.setState({
@@ -81,17 +81,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  content: {
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    width: '30rem',
-    height: '60%',
-    padding: '1rem',
-    margin: '0 auto'
   }
 }
 

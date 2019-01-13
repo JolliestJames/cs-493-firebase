@@ -55,7 +55,6 @@ class Note extends Component {
 
   render() {
     const {title, body, error} = this.state
-    const {container, note_title, note_content, delete_button} = styles
 
     return (
       <div className="container">
@@ -88,34 +87,6 @@ class Note extends Component {
         {error && <p>{error.message}</p>}
       </div>
     )
-  }
-}
-
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    backgroundColor: '#DDDDDD',
-    width: '30rem',
-    height: '60%',
-    padding: '1rem',
-    margin: '0 auto'
-  },
-  note_title: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 'o auto'
-  },
-  note_content: {
-    justifyContent: 'center',
-    backgroundColor: '#FFFFCC',
-    border: 'none',
-    borderRadius: '0.05rem',
-    padding: '1rem',
-    margin: '0.5rem'
   }
 }
 
