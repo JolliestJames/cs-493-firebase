@@ -31,6 +31,9 @@ class Firebase {
       body: body
     })
 
+  deleteNote = (id) =>
+    this.database.ref('/notes/' +id).remove()
+
   getNotes = () =>
     this.database.ref('/notes');
 
