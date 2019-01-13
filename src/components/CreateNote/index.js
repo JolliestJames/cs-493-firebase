@@ -37,23 +37,29 @@ class CreateNote extends Component {
     const {content} = styles;
 
     return (
-      <div style={content}>
+      <div className="container">
         <form onSubmit={this.createNote}>
-          <input
-            name="title"
-            value={title}
-            type="text"
-            onChange={this.onChange}
-            placeholder="Title"
-          />
-          <input
-            name="body"
-            value={body}
-            type="text"
-            onChange={this.onChange}
-            placeholder="Body"
-          />
-          <button type="submit">Create Note</button>
+          <div className="form-group">
+            <input
+              name="title"
+              value={title}
+              type="text"
+              onChange={this.onChange}
+              placeholder="Title"
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              name="body"
+              value={body}
+              type="text"
+              onChange={this.onChange}
+              placeholder="Body"
+              className="form-control"
+            />
+          </div>
+          <button className="btn btn-primary" type="submit">Create Note</button>
         </form>
       </div>
     );
