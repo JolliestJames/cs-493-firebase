@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,6 +18,7 @@ class Firebase {
 
     this.auth = app.auth();
     this.database = app.database();
+    this.storage = app.storage();
   }
 
   createNote = (title, body) =>
@@ -30,6 +32,9 @@ class Firebase {
       title: title,
       body: body
     })
+
+  imageRef = (id) =>
+    this.storage.ref('/notes/' + id + '/').child('image')
 
   deleteNote = (id) =>
     this.database.ref('/notes/' +id).remove()
