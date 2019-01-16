@@ -12,6 +12,12 @@ const Navigation = () => (
       <li>
         <Link to={ROUTES.HOME}>Home</Link>
       </li>
+      <li>
+        <Link to={ROUTES.NOTES}>Notes</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.CREATE_NOTE}>Create Note</Link>
+      </li>
     </ul>
   </div>
 );

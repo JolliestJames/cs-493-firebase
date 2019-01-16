@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,7 +16,29 @@ class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
+    this.database = app.database();
   }
+
+  createNote = (title, body) =>
+    this.database.ref('notes').push({
+      title: title,
+      body: body
+    })
+
+  updateNote = (id, title, body) =>
+    this.database.ref('/notes/' +id).set({
+      title: title,
+      body: body
+    })
+
+  deleteNote = (id) =>
+    this.database.ref('/notes/' +id).remove()
+
+  getNotes = () =>
+    this.database.ref('/notes');
+
+  getNote = (id) =>
+    this.database.ref('/notes/' +id)
 
   createUser = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
