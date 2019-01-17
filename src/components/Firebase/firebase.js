@@ -21,14 +21,14 @@ class Firebase {
     this.storage = app.storage();
   }
 
-  createNote = (title, body) =>
-    this.database.ref('notes').push({
+  createNote = (user_id, title, body) =>
+    this.database.ref('notes/' + user_id).push({
       title: title,
       body: body
     })
 
-  updateNote = (id, title, body) =>
-    this.database.ref('/notes/' +id).set({
+  updateNote = (user_id, note_id, title, body) =>
+    this.database.ref('/notes/' + user_id + '/' + note_id).set({
       title: title,
       body: body
     })
@@ -36,14 +36,14 @@ class Firebase {
   imageRef = (id) =>
     this.storage.ref('/notes/' + id + '/').child('image')
 
-  deleteNote = (id) =>
-    this.database.ref('/notes/' +id).remove()
+  deleteNote = (user_id, note_id) =>
+    this.database.ref('/notes/' + user_id + '/' + note_id).remove()
 
-  getNotes = () =>
-    this.database.ref('/notes');
+  getNotes = (user_id) =>
+    this.database.ref('/notes/' + user_id);
 
-  getNote = (id) =>
-    this.database.ref('/notes/' +id)
+  getNote = (user_id, note_id) =>
+    this.database.ref('/notes/' + user_id + '/' + note_id)
 
   createUser = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
