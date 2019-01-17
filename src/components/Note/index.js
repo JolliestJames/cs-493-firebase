@@ -11,11 +11,12 @@ class Note extends Component {
       title: '',
       body: '',
       note_id: props.history.location.state.note_id,
+      user_id: this.props.firebase.currentUser().uid,
       image_url: '',
       error: ''
     }
 
-    this.props.firebase.getNote(this.state.note_id)
+    this.props.firebase.getNote(this.state.user_id, this.state.note_id)
       .once('value').then(snapshot => {
         this.setState({
           title: snapshot.val().title,
@@ -28,9 +29,9 @@ class Note extends Component {
   }
 
   deleteNote = event => {
-    const {note_id} = this.state;
+    const {note_id, user_id} = this.state;
 
-    this.props.firebase.deleteNote(note_id)
+    this.props.firebase.deleteNote(user_id, note_id)
       .then(result => {
         this.props.history.push(ROUTES.NOTES);
       })
@@ -42,10 +43,10 @@ class Note extends Component {
   }
 
   updateNote = event => {
-    const {note_id, title, body} = this.state;
+    const {user_id, note_id, title, body} = this.state;
 
     this.props.firebase
-      .updateNote(note_id, title, body)
+      .updateNote(user_id, note_id, title, body)
       .then(result => {
         this.props.history.push(ROUTES.NOTES);
       })
