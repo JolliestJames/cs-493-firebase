@@ -10,7 +10,8 @@ class Notes extends Component {
     this.state = {
       title: '',
       body: '',
-      notes: []
+      notes: [],
+      user_id: this.props.firebase.currentUser().uid
     }
   }
 
@@ -36,10 +37,10 @@ class Notes extends Component {
   }
 
   render() {
-    const {notes} = this.state;
+    const {notes, user_id} = this.state;
     const {notes_div} = styles;
 
-    this.props.firebase.getNotes().once('value').then(snapshot => {
+    this.props.firebase.getNotes(user_id).once('value').then(snapshot => {
       this.setState({
         notes: snapshot
       });
