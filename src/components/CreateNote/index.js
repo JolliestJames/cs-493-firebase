@@ -9,15 +9,17 @@ class CreateNote extends Component {
 
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      user_id: this.props.firebase.currentUser().uid,
+      error: ''
     }
   }
 
   createNote = event => {
-    const {title, body} = this.state;
+    const {title, body, user_id} = this.state;
 
     this.props.firebase
-      .createNote(title, body)
+      .createNote(user_id, title, body)
       .then(result => {
         this.props.history.push(ROUTES.NOTES);
       })
@@ -33,7 +35,7 @@ class CreateNote extends Component {
   };
 
   render() {
-    const {title, body} = this.state;
+    const {title, body, error} = this.state;
 
     return (
       <div className="container">
@@ -60,6 +62,7 @@ class CreateNote extends Component {
           </div>
           <button className="btn btn-primary" type="submit">Create Note</button>
         </form>
+        {error && <p>{error.message}</p>}
       </div>
     );
   }
