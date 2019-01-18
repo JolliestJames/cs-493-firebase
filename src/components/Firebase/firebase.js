@@ -33,8 +33,8 @@ class Firebase {
       body: body
     })
 
-  imageRef = (id) =>
-    this.storage.ref('/notes/' + id + '/').child('image')
+  imageRef = (user_id, note_id) =>
+    this.storage.ref('/notes/' + user_id + '/' + note_id + '/').child('image')
 
   deleteNote = (user_id, note_id) =>
     this.database.ref('/notes/' + user_id + '/' + note_id).remove()
