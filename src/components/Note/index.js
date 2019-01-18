@@ -56,10 +56,10 @@ class Note extends Component {
   }
 
   uploadFile = event => {
-    const {note_id} = this.state;
+    const {user_id, note_id} = this.state;
     const file = this.fileInput.current.files[0]
 
-    this.props.firebase.imageRef(note_id).put(file)
+    this.props.firebase.imageRef(user_id, note_id).put(file)
       .then(result => {
         this.getImage()
       })
@@ -71,9 +71,9 @@ class Note extends Component {
   }
 
   deleteFile = event => {
-    const {note_id} = this.state;
+    const {user_id, note_id} = this.state;
 
-    this.props.firebase.imageRef(note_id).delete()
+    this.props.firebase.imageRef(user_id, note_id).delete()
       .then(result => {
         this.setState({image_url: ''})
       })
@@ -85,9 +85,9 @@ class Note extends Component {
   }
 
   getImage() {
-    const {note_id} = this.state;
+    const {user_id, note_id} = this.state;
 
-    this.props.firebase.imageRef(note_id).getDownloadURL()
+    this.props.firebase.imageRef(user_id, note_id).getDownloadURL()
       .then(url => {
         this.setState({image_url: url})
       })
