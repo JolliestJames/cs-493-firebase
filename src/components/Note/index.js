@@ -12,6 +12,7 @@ class Note extends Component {
       body: '',
       note_id: props.history.location.state.note_id,
       user_id: this.props.firebase.currentUser().uid,
+      category_id: props.history.location.state.category_id,
       image_url: '',
       error: ''
     }
@@ -33,7 +34,12 @@ class Note extends Component {
 
     this.props.firebase.deleteNote(user_id, note_id)
       .then(result => {
-        this.props.history.push(ROUTES.NOTES);
+        this.props.history.push(
+          {
+            pathname: ROUTES.VIEW_CATEGORY,
+            state: { category_id: this.state.category_id }
+          }
+        );
       })
       .catch(error => {
         this.setState({error});
@@ -43,12 +49,17 @@ class Note extends Component {
   }
 
   updateNote = event => {
-    const {user_id, note_id, title, body} = this.state;
+    const {user_id, note_id, category_id, title, body} = this.state;
 
     this.props.firebase
-      .updateNote(user_id, note_id, title, body)
+      .updateNote(user_id, note_id, category_id, title, body)
       .then(result => {
-        this.props.history.push(ROUTES.NOTES);
+        this.props.history.push(
+          {
+            pathname: ROUTES.VIEW_CATEGORY,
+            state: { category_id: this.state.category_id }
+          }
+        );
       })
       .catch(error => {this.setState({error})});
 
