@@ -11,17 +11,23 @@ class CreateNote extends Component {
       title: '',
       body: '',
       user_id: this.props.firebase.currentUser().uid,
+      category_id: props.history.location.state.category_id,
       error: ''
     }
   }
 
   createNote = event => {
-    const {title, body, user_id} = this.state;
+    const {title, body, user_id, category_id} = this.state;
 
     this.props.firebase
-      .createNote(user_id, title, body)
+      .createNote(user_id, title, body, category_id)
       .then(result => {
-        this.props.history.push(ROUTES.NOTES);
+        this.props.history.push(
+          {
+            pathname: ROUTES.VIEW_CATEGORY,
+            state: { category_id: this.state.category_id }
+          }
+        );
       })
       .catch(error => {
         this.setState({ error });
