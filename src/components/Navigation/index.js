@@ -13,10 +13,10 @@ const Navigation = () => (
         <Link to={ROUTES.HOME}>Home</Link>
       </li>
       <li>
-        <Link to={ROUTES.NOTES}>Notes</Link>
+        <Link to={ROUTES.CATEGORIES}>Note Categories</Link>
       </li>
       <li>
-        <Link to={ROUTES.CREATE_NOTE}>Create Note</Link>
+        <Link to={ROUTES.CREATE_CATEGORY}>Create Category</Link>
       </li>
     </ul>
   </div>
