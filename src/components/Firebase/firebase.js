@@ -21,16 +21,26 @@ class Firebase {
     this.storage = app.storage();
   }
 
-  createNote = (user_id, title, body) =>
+  getCategories = (user_id) =>
+    this.database.ref('categories/' + user_id);
+
+  createCategory = (user_id, name) =>
+    this.database.ref('categories/' + user_id).push({
+      name: name
+    });
+
+  createNote = (user_id, title, body, category_id) =>
     this.database.ref('notes/' + user_id).push({
       title: title,
-      body: body
+      body: body,
+      category_id: category_id
     })
 
-  updateNote = (user_id, note_id, title, body) =>
+  updateNote = (user_id, note_id, category_id, title, body) =>
     this.database.ref('/notes/' + user_id + '/' + note_id).set({
       title: title,
-      body: body
+      body: body,
+      category_id: category_id
     })
 
   imageRef = (user_id, note_id) =>
