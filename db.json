@@ -5,6 +5,12 @@
         ".read": "auth.uid == $uid",
         ".write": "auth.uid == $uid"
       }
+    },
+    "categories": {
+      "$uid": {
+        ".read": "auth.uid == $uid",
+        ".write": "auth.uid == $uid"
+      }
     }
   }
 }
